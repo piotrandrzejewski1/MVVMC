@@ -1,9 +1,23 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMC.iOS", "MVVMC.iOS\MVVMC.iOS.csproj", "{BB0962D7-C473-4784-9C79-056D1C0179A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB0962D7-C473-4784-9C79-056D1C0179A7}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{BB0962D7-C473-4784-9C79-056D1C0179A7}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{BB0962D7-C473-4784-9C79-056D1C0179A7}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{BB0962D7-C473-4784-9C79-056D1C0179A7}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{BB0962D7-C473-4784-9C79-056D1C0179A7}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{BB0962D7-C473-4784-9C79-056D1C0179A7}.Debug|iPhone.Build.0 = Debug|iPhone
+		{BB0962D7-C473-4784-9C79-056D1C0179A7}.Release|iPhone.ActiveCfg = Release|iPhone
+		{BB0962D7-C473-4784-9C79-056D1C0179A7}.Release|iPhone.Build.0 = Release|iPhone
 	EndGlobalSection
 EndGlobal

@@ -1,5 +1,8 @@
-﻿using Foundation;
+﻿using Autofac;
+using Foundation;
+using MVVMC.Core;
 using MVVMC.iOS.Scenes;
+using MVVMC.iOS.Scenes.Home;
 using UIKit;
 
 namespace MVVMC.iOS
@@ -17,11 +20,24 @@ namespace MVVMC.iOS
         [Export("application:didFinishLaunchingWithOptions:")]
         public bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            Window = new UIWindow(UIScreen.MainScreen.Bounds);
-            appCoordinator = new AppCoordinator(Window);
+            var iocContainer = PrepareIocContrainer();
+            var navigationController = new UINavigationController();
+
+            appCoordinator = new AppCoordinator(iocContainer, navigationController);
             appCoordinator.Start();
 
+            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            Window.RootViewController = navigationController;
+            Window.MakeKeyAndVisible();
+
             return true;
+        }
+
+        private IContainer PrepareIocContrainer()
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterType<SplashViewModel>();
+            return builder.Build();
         }
     }
 }

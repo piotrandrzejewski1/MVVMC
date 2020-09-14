@@ -1,4 +1,7 @@
 ﻿using System;
+using Autofac;
+using MVVMC.Core;
+using MVVMC.iOS.Scenes.Home;
 using MVVMC.iOS.Scenes.Splash;
 using UIKit;
 
@@ -6,33 +9,18 @@ namespace MVVMC.iOS.Scenes
 {
     public class AppCoordinator : CoordinatorBase
     {
-        private readonly UIWindow window;
-        private readonly UINavigationController navigationController = new UINavigationController();
+        private IContainer iocContainer;
 
-        public AppCoordinator(UIWindow window)
+        public AppCoordinator(IContainer iocContainer, UINavigationController navigationController)
+            : base(navigationController)
         {
-            this.window = window;
+            this.iocContainer = iocContainer;
         }
 
         public override void Start()
         {
-            navigationController.NavigationBar.Hidden = true;
-            window.RootViewController = navigationController;
-            window.MakeKeyAndVisible();
-
-            ShowSplash();
-        }
-
-        public override void Finish()
-        {
-        }
-
-        private void ShowSplash()
-        {
-            var storyboard = UIStoryboard.FromName("Splash", null);
-            var splashVc = storyboard.InstantiateViewController("SplashViewController");
-
-            navigationController.ViewControllers = new[] { splashVc };
+            var splashCoordinator = new SplashCoordinator(iocContainer, navigationController);
+            splashCoordinator.Start();
         }
     }
 }

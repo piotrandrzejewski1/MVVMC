@@ -7,20 +7,16 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace MVVMC.iOS.Scenes.Splash
+namespace MVVMC.iOS.Scenes.Home
 {
-	[Register ("SplashViewController")]
-	partial class SplashViewController
+	[Register ("HomeViewController")]
+	partial class HomeViewController
 	{
-		[Outlet]
-		UIKit.UILabel splashLabel { get; set; }
+		[Action ("AbcClicked")]
+		partial void AbcClicked ();
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (splashLabel != null) {
-				splashLabel.Dispose ();
-				splashLabel = null;
-			}
 		}
 	}
 }

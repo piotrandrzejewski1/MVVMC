@@ -4,13 +4,51 @@ using System;
 
 using Foundation;
 using UIKit;
+using MVVMC.Core;
+using GalaSoft.MvvmLight.Helpers;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MVVMC.iOS.Scenes.Splash
 {
 	public partial class SplashViewController : UIViewController
-	{
-		public SplashViewController (IntPtr handle) : base (handle)
+    {
+        private SplashViewModel viewModel;
+
+        private readonly List<Binding> bindings = new List<Binding>();
+
+        public SplashViewController (IntPtr handle) : base (handle)
 		{
+        }
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            InitializeBindings();
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+            viewModel.ViewAppeared();
 		}
-	}
+
+        public void SetViewModel(SplashViewModel viewModel)
+        {
+            this.viewModel = viewModel;
+        }
+
+        private void InitializeBindings()
+        {
+            bindings.Add(this.SetBinding(() => viewModel.SampleText, () => splashLabel.Text));
+        }
+
+        public override void ViewDidUnload()
+        {
+            bindings.ForEach(b => b.Detach());
+            bindings.Clear();
+
+            base.ViewDidUnload();
+        }
+    }
 }

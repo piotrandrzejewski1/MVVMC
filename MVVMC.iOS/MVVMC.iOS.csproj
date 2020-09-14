@@ -68,12 +68,6 @@
         <Reference Include="System.Numerics.Vectors" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
-      <PackageReference Include="Autofac">
-        <Version>5.2.0</Version>
-      </PackageReference>
-    </ItemGroup>
-    <ItemGroup>
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
             <Visible>false</Visible>
         </ImageAsset>
@@ -121,10 +115,13 @@
         <Folder Include="Resources\" />
         <Folder Include="Scenes\" />
         <Folder Include="Scenes\Splash\" />
+        <Folder Include="Scenes\Home\" />
+        <Folder Include="Helpers\" />
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="LaunchScreen.storyboard" />
         <InterfaceDefinition Include="Scenes\Splash\Splash.storyboard" />
+        <InterfaceDefinition Include="Scenes\Home\Home.storyboard" />
     </ItemGroup>
     <ItemGroup>
         <None Include="Info.plist" />
@@ -141,6 +138,27 @@
         <Compile Include="Scenes\ICoordinator.cs" />
         <Compile Include="Scenes\CoordinatorBase.cs" />
         <Compile Include="Scenes\AppCoordinator.cs" />
+        <Compile Include="Scenes\Home\HomeViewController.cs" />
+        <Compile Include="Scenes\Home\HomeViewController.designer.cs">
+          <DependentUpon>HomeViewController.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Scenes\Home\HomeCoordinator.cs" />
+        <Compile Include="Scenes\Splash\SplashCoordinator.cs" />
+        <Compile Include="Helpers\UIStoryboardExtensions.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\MVVMC.Core\MVVMC.Core.csproj">
+        <Project>{7039A092-432D-42DD-9070-F606C1BC4996}</Project>
+        <Name>MVVMC.Core</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="MvvmLightLibs">
+        <Version>5.4.1.1</Version>
+      </PackageReference>
+      <PackageReference Include="Autofac">
+        <Version>5.2.0</Version>
+      </PackageReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
